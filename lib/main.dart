@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showtrack/utils/constants.dart';
-import 'package:showtrack/utils/routes.dart';
+import 'package:showtrack/services/routes.dart';
 
 void main() {
   runApp(MyApp());

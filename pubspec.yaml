@@ -88,6 +88,7 @@ dependencies:
   flutter_mobx: ^2.0.6+1
   month_picker_dialog_2: ^0.5.5  
   mockito: ^5.3.1
+  equatable: ^2.0.3
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
