@@ -242,6 +242,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "dartz",
+      "rootUri": "file:///Users/rafhaelamarques/Documents/ambiente/flutter_sdk/.pub-cache/hosted/pub.dartlang.org/dartz-0.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "date_format",
       "rootUri": "file:///Users/rafhaelamarques/Documents/ambiente/flutter_sdk/.pub-cache/hosted/pub.dartlang.org/date_format-2.0.7",
       "packageUri": "lib/",
@@ -1484,7 +1490,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-11-13T16:47:49.607352Z",
+  "generated": "2022-12-04T19:27:28.850433Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }
