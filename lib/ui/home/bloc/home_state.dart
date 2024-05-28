@@ -28,7 +28,7 @@ class HomeState extends Equatable {
   }
 }
 
-// Possiveis estados da home page
+// Possiveis estados da home page e seus componentes
 enum HomeStatus { initial, loading, success, failure, empty, selected }
 
 extension HomeStatusX on HomeStatus {

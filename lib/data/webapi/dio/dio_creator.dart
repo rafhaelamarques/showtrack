@@ -10,7 +10,7 @@ class DioCreator {
   DioCreator._internal();
   // Singleton
 
-  /// Cria uma instância do Dio com as configurações padrão
+  /// Dio base com algumas configurações padrão
   /// permitindo url e interceptors customizados
   Dio create({
     required String baseUrl,

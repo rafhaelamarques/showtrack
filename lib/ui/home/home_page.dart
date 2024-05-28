@@ -17,9 +17,7 @@ class HomePage extends StatelessWidget {
       body: RepositoryProvider(
         create: (context) => TvShowRepository,
         child: BlocProvider(
-          create: (context) => HomeBloc(
-            showRepository: context.read<TvShowRepository>(),
-          )..add(HomeLoadEvent()),
+          create: (context) => HomeBloc()..add(HomeLoadEvent()),
           child: const Padding(
               padding: EdgeInsets.all(8.0),
               child: Column(

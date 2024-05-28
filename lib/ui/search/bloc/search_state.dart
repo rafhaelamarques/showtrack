@@ -32,7 +32,7 @@ class SearchState extends Equatable {
   }
 }
 
-// Possiveis estados da search page
+// Possiveis estados da search page e seus componentes
 enum SearchStatus { initial, searching, success, failure, empty, add }
 
 extension SearchStatusX on SearchStatus {

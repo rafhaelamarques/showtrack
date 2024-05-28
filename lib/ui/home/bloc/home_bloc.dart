@@ -1,6 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:showtrack/core/application.dart';
 import 'package:showtrack/data/model/show.dart';
 import 'package:showtrack/data/repositories/tv_show_repository.dart';
 
@@ -8,13 +9,11 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final TvShowRepository showRepository;
-  HomeBloc({
-    required this.showRepository,
-  }) : super(const HomeState()) {
+  HomeBloc() : super(const HomeState()) {
     on<HomeLoadEvent>(
       (event, emit) async {
         emit(state.copyWith(status: HomeStatus.loading));
+        final showRepository = getIt.get<TvShowRepository>();
         try {
           final shows = await showRepository.getShows();
           if (shows.isEmpty) {
