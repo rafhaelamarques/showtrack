@@ -19,6 +19,6 @@ class Application {
   static Future<void> _dioInit() async {
     // TV Maze API
     const baseUrl = 'https://api.tvmaze.com';
-    await DioTvMazeCreator().initialize(baseUrl);
+    await DioTvMazeCreator().init(baseUrl);
   }
 }

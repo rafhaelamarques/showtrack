@@ -13,7 +13,7 @@ class DioTvMazeCreator {
   // Singleton
 
   late String _baseUrl;
-  Future<void> initialize(String baseUrl) async {
+  Future<void> init(String baseUrl) async {
     _baseUrl = baseUrl;
   }
 
