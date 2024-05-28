@@ -21,7 +21,11 @@ class TvShowRepository {
 
   Future<void> saveShow(Show show) async {
     List<Show> shows = await getShows();
-    shows.add(show);
+    if (shows.any((element) => element.id == show.id)) {
+      shows.removeWhere((element) => element.id == show.id);
+    } else {
+      shows.add(show);
+    }
     await _box.put('shows', shows);
   }
 

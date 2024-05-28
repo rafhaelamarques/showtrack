@@ -8,9 +8,9 @@ class HomeState extends Equatable {
 
   const HomeState({
     this.status = HomeStatus.initial,
-    List<Show>? shows,
+    this.shows = const [],
     this.selectedShowId = 0,
-  }) : shows = shows ?? const [];
+  });
 
   @override
   List<Object> get props => [status, shows];
@@ -29,7 +29,7 @@ class HomeState extends Equatable {
 }
 
 // Possiveis estados da home page
-enum HomeStatus { initial, loading, success, failure, empty, add, selected }
+enum HomeStatus { initial, loading, success, failure, empty, selected }
 
 extension HomeStatusX on HomeStatus {
   bool get isInitial => this == HomeStatus.initial;
@@ -37,6 +37,5 @@ extension HomeStatusX on HomeStatus {
   bool get isSuccess => this == HomeStatus.success;
   bool get isFailure => this == HomeStatus.failure;
   bool get isEmpty => this == HomeStatus.empty;
-  bool get isAdd => this == HomeStatus.add;
   bool get isSelected => this == HomeStatus.selected;
 }

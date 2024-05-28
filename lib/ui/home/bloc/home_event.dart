@@ -10,8 +10,6 @@ class HomeEvent extends Equatable {
 
 class HomeLoadEvent extends HomeEvent {}
 
-class HomeAddEvent extends HomeEvent {}
-
 class HomeSelectedEvent extends HomeEvent {
   final int showId;
 

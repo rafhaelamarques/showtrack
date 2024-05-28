@@ -12,30 +12,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required this.showRepository,
   }) : super(const HomeState()) {
-    on<HomeEvent>(
+    on<HomeLoadEvent>(
       (event, emit) async {
-        if (event is HomeLoadEvent) {
-          emit(state.copyWith(status: HomeStatus.loading));
-          try {
-            final shows = await showRepository.getShows();
-            if (shows.isEmpty) {
-              emit(state.copyWith(status: HomeStatus.empty));
-            } else {
-              emit(state.copyWith(
-                status: HomeStatus.success,
-                shows: shows,
-              ));
-            }
-          } catch (e) {
-            emit(state.copyWith(status: HomeStatus.failure));
+        emit(state.copyWith(status: HomeStatus.loading));
+        try {
+          final shows = await showRepository.getShows();
+          if (shows.isEmpty) {
+            emit(state.copyWith(status: HomeStatus.empty));
+          } else {
+            emit(state.copyWith(
+              status: HomeStatus.success,
+              shows: shows,
+            ));
           }
+        } catch (e) {
+          emit(state.copyWith(status: HomeStatus.failure));
         }
       },
     );
-    on<HomeAddEvent>((event, emit) {
-      emit(state.copyWith(status: HomeStatus.add));
-    });
-
     on<HomeSelectedEvent>((event, emit) {
       emit(state.copyWith(
         status: HomeStatus.selected,
