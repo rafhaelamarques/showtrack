@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:showtrack/styles/colors.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
 import 'package:showtrack/ui/search/widgets/search_field.dart';
 import 'package:showtrack/ui/search/widgets/show_preview_card.dart';
@@ -11,7 +12,9 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Adicionar nova série'),
+        title: const Text('Adicionar'),
+        backgroundColor: lightRed,
+        foregroundColor: white,
       ),
       body: BlocProvider(
         create: (context) => SearchBloc(),
@@ -20,7 +23,7 @@ class SearchPage extends StatelessWidget {
           child: Column(
             children: [
               SearchField(),
-              SearchShowPresentation(),
+              Expanded(child: SearchShowPresentation()),
             ],
           ),
         ),
@@ -45,16 +48,11 @@ class SearchShowPresentation extends StatelessWidget {
           );
         }
         if (state.status.isSuccess) {
-          List<Widget> children = state.result
-              .expand((element) => [
-                    ShowPreviewCard(show: element.show),
-                    const Divider(height: 1),
-                  ])
-              .toList();
-          return Expanded(
-            child: ListView(
-              children: children,
-            ),
+          return ListView.builder(
+            itemCount: state.result.length,
+            itemBuilder: (context, index) {
+              return ShowPreviewCard(show: state.result[index].show);
+            },
           );
         }
         if (state.status.isEmpty) {

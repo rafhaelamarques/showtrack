@@ -5,6 +5,17 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Pesquisar nova série',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {},
+        ),
+      ),
+    );
   }
 }
