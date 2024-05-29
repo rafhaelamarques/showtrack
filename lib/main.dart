@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showtrack/core/application.dart';
-import 'package:showtrack/styles/colors.dart';
+import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/ui/splash/splash_page.dart';
 
 Future<void> main() async {
