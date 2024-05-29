@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showtrack/core/application.dart';
+import 'package:showtrack/styles/colors.dart';
 import 'package:showtrack/ui/splash/splash_page.dart';
 
 Future<void> main() async {
@@ -18,7 +19,7 @@ class ShowTrackApp extends StatelessWidget {
     return MaterialApp(
       title: 'ShowTrack',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: midRed),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
