@@ -4,9 +4,9 @@ part 'rating.g.dart';
 
 @JsonSerializable()
 class Rating {
-  double average;
+  double? average;
 
-  Rating({required this.average});
+  Rating({this.average});
 
   factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
 

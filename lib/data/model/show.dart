@@ -20,7 +20,7 @@ class Show extends HiveObject {
   @HiveField(2)
   String status;
   @HiveField(3)
-  int averageRuntime;
+  int? averageRuntime;
   @HiveField(4)
   Schedule? schedule;
   @HiveField(5)
@@ -39,12 +39,15 @@ class Show extends HiveObject {
     required this.id,
     required this.name,
     required this.status,
-    required this.averageRuntime,
+    this.averageRuntime,
     this.schedule,
     this.rating,
     this.network,
     this.webChannel,
     this.image,
+    this.summary,
+    this.lLinks,
+    this.eEmbedded,
   });
 
   factory Show.fromJson(Map<String, dynamic> json) => _$ShowFromJson(json);
