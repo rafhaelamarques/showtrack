@@ -23,11 +23,19 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(
-        'assets/images/logo.png',
-        width: 200,
-        height: 200,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+            ),
+            const SizedBox(height: 100),
+            const CircularProgressIndicator(),
+          ],
+        ),
       ),
     );
   }
