@@ -3,31 +3,27 @@ part of 'search_bloc.dart';
 @immutable
 class SearchState extends Equatable {
   final SearchStatus status;
-  final List<Search> result;
   final String query;
-  final Show? show;
+  final List<Search> result;
 
   const SearchState({
     this.status = SearchStatus.initial,
-    this.result = const [],
     this.query = '',
-    this.show,
+    this.result = const [],
   });
 
   @override
-  List<Object> get props => [status, result, query];
+  List<Object> get props => [status, query, result];
 
   SearchState copyWith({
     SearchStatus? status,
     List<Search>? result,
     String? query,
-    Show? show,
   }) {
     return SearchState(
       status: status ?? this.status,
       result: result ?? this.result,
       query: query ?? this.query,
-      show: show ?? this.show,
     );
   }
 }
@@ -36,10 +32,27 @@ class SearchState extends Equatable {
 enum SearchStatus { initial, searching, success, failure, empty, add }
 
 extension SearchStatusX on SearchStatus {
-  bool get isInitial => this == SearchStatus.initial;
-  bool get isSearching => this == SearchStatus.searching;
-  bool get isSuccess => this == SearchStatus.success;
-  bool get isFailure => this == SearchStatus.failure;
-  bool get isEmpty => this == SearchStatus.empty;
-  bool get isAddeed => this == SearchStatus.add;
+  T when<T>({
+    required T Function() initial,
+    required T Function() searching,
+    required T Function() success,
+    required T Function() failure,
+    required T Function() empty,
+    required T Function() add,
+  }) {
+    switch (this) {
+      case SearchStatus.initial:
+        return initial();
+      case SearchStatus.searching:
+        return searching();
+      case SearchStatus.success:
+        return success();
+      case SearchStatus.failure:
+        return failure();
+      case SearchStatus.empty:
+        return empty();
+      case SearchStatus.add:
+        return add();
+    }
+  }
 }

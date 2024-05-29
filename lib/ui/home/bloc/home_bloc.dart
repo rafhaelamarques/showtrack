@@ -13,7 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeLoadEvent>(
       (event, emit) async {
         emit(state.copyWith(status: HomeStatus.loading));
-        final showRepository = getIt.get<TvShowRepository>();
+        final showRepository = getIt<TvShowRepository>();
         try {
           final shows = await showRepository.getShows();
           if (shows.isEmpty) {
@@ -25,6 +25,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             ));
           }
         } catch (e) {
+          debugPrint(e.toString());
           emit(state.copyWith(status: HomeStatus.failure));
         }
       },

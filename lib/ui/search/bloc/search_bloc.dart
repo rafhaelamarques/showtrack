@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:showtrack/core/application.dart';
 import 'package:showtrack/data/model/search.dart';
 import 'package:showtrack/data/model/show.dart';
+import 'package:showtrack/data/repositories/tv_show_repository.dart';
 import 'package:showtrack/data/webapi/client/tv_show_client.dart';
 
 part 'search_event.dart';
@@ -10,6 +12,8 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final TvShowClient client = TvShowClient();
+  final TvShowRepository repository = getIt<TvShowRepository>();
+  final TextEditingController searchController = TextEditingController();
   late List<Search> result;
 
   SearchBloc() : super(const SearchState()) {
@@ -27,15 +31,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             ));
           }
         } catch (e) {
+          debugPrint(e.toString());
           emit(state.copyWith(status: SearchStatus.failure));
         }
       },
     );
     on<SearchAddEvent>((event, emit) {
-      emit(state.copyWith(
-        status: SearchStatus.add,
-        show: event.show,
-      ));
+      repository.saveShow(event.show);
+      emit(state.copyWith(status: SearchStatus.add));
     });
   }
 }

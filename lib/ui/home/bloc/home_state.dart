@@ -32,10 +32,27 @@ class HomeState extends Equatable {
 enum HomeStatus { initial, loading, success, failure, empty, selected }
 
 extension HomeStatusX on HomeStatus {
-  bool get isInitial => this == HomeStatus.initial;
-  bool get isLoading => this == HomeStatus.loading;
-  bool get isSuccess => this == HomeStatus.success;
-  bool get isFailure => this == HomeStatus.failure;
-  bool get isEmpty => this == HomeStatus.empty;
-  bool get isSelected => this == HomeStatus.selected;
+  T when<T>({
+    required T Function() initial,
+    required T Function() loading,
+    required T Function() success,
+    required T Function() failure,
+    required T Function() empty,
+    required T Function() selected,
+  }) {
+    switch (this) {
+      case HomeStatus.initial:
+        return initial();
+      case HomeStatus.loading:
+        return loading();
+      case HomeStatus.success:
+        return success();
+      case HomeStatus.failure:
+        return failure();
+      case HomeStatus.empty:
+        return empty();
+      case HomeStatus.selected:
+        return selected();
+    }
+  }
 }
