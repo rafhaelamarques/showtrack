@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/core/services/application.dart';
 import 'package:showtrack/core/styles/colors.dart';
+import 'package:showtrack/ui/home/home_page.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
 import 'package:showtrack/ui/search/widgets/search_field.dart';
 import 'package:showtrack/ui/search/widgets/show_search_card.dart';
@@ -16,6 +17,16 @@ class SearchPage extends StatelessWidget {
         title: const Text('Adicionar'),
         backgroundColor: lightRed,
         foregroundColor: white,
+        leading: IconButton(
+          icon: Theme.of(context).platform == TargetPlatform.iOS
+              ? const Icon(Icons.arrow_back_ios)
+              : const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+                (MaterialPageRoute(builder: (context) => const HomePage())),
+                (route) => false);
+          },
+        ),
       ),
       body: BlocProvider(
         create: (context) => getIt<SearchBloc>(),
@@ -40,12 +51,9 @@ class SearchShowPresentation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<SearchBloc>(context);
-
-    return BlocBuilder(
-      bloc: bloc,
+    return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        return bloc.state.status.when(
+        return state.status.when(
           initial: () => const SizedBox(),
           searching: () => const Center(
             child: CircularProgressIndicator(),
@@ -53,12 +61,17 @@ class SearchShowPresentation extends StatelessWidget {
           empty: () => const Center(
             child: Text('Nada para mostrar aqui'),
           ),
-          success: () => ListView.builder(
-            itemCount: bloc.state.result.length,
-            itemBuilder: (context, index) {
-              return ShowSearchCard(show: bloc.state.result[index].show);
-            },
-          ),
+          success: () {
+            List<Widget> children =
+                state.result.take(state.result.length).expand((element) {
+              return [
+                ShowSearchCard(show: element.show),
+              ];
+            }).toList();
+            return ListView(
+              children: children,
+            );
+          },
           failure: () => const Center(
             child: Text('Erro ao buscar série'),
           ),

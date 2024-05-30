@@ -44,12 +44,9 @@ class HomeShowPresentation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<HomeBloc>(context);
-
-    return BlocBuilder(
-      bloc: bloc,
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return bloc.state.status.when(
+        return state.status.when(
           initial: () => const SizedBox(),
           loading: () => const Center(
             child: CircularProgressIndicator(),
@@ -61,9 +58,9 @@ class HomeShowPresentation extends StatelessWidget {
             ),
           ),
           success: () => ListView.builder(
-            itemCount: bloc.state.shows.length,
+            itemCount: state.shows.length,
             itemBuilder: (context, index) {
-              return ShowPreviewCard(show: bloc.state.shows[index]);
+              return ShowPreviewCard(show: state.shows[index]);
             },
           ),
           failure: () => const Center(

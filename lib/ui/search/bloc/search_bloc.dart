@@ -25,6 +25,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     );
     on<SearchAddEvent>((event, emit) {
       repository.saveShow(event.show);
+      emit(state.copyWith(status: SearchStatus.add));
     });
   }
 
