@@ -22,5 +22,9 @@ class Schedule {
   Map<String, dynamic> toJson() => _$ScheduleToJson(this);
 
   @override
-  String toString() => '$time | ${days?.join(', ')}';
+  String toString() {
+    return time != '' && days != null
+        ? '$time | ${days?.join(', ')}'
+        : 'Sem informações';
+  }
 }

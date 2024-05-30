@@ -60,6 +60,9 @@ class Show {
   String get formattedSummary =>
       summary?.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), '') ?? '';
 
+  String get runtime =>
+      averageRuntime != null ? '$averageRuntime min' : 'Sem informações';
+
   StatusEnum getStatusEnum() {
     switch (status) {
       case 'Running':
