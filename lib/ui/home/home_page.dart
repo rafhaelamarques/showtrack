@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/application.dart';
+import 'package:showtrack/core/services/application.dart';
 import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/data/repositories/tv_show_repository.dart';
 import 'package:showtrack/ui/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/home/widgets/add_show_button.dart';
-import 'package:showtrack/ui/home/widgets/show_card.dart';
+import 'package:showtrack/ui/home/widgets/show_preview_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -63,7 +63,7 @@ class HomeShowPresentation extends StatelessWidget {
           success: () => ListView.builder(
             itemCount: bloc.state.shows.length,
             itemBuilder: (context, index) {
-              return ShowCard(show: bloc.state.shows[index]);
+              return ShowPreviewCard(show: bloc.state.shows[index]);
             },
           ),
           failure: () => const Center(

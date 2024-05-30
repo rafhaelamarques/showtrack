@@ -29,7 +29,7 @@ class SearchState extends Equatable {
 }
 
 // Possiveis estados da search page e seus componentes
-enum SearchStatus { initial, searching, success, failure, empty, add }
+enum SearchStatus { initial, searching, success, failure, empty }
 
 extension SearchStatusX on SearchStatus {
   T when<T>({
@@ -38,7 +38,6 @@ extension SearchStatusX on SearchStatus {
     required T Function() success,
     required T Function() failure,
     required T Function() empty,
-    required T Function() add,
   }) {
     switch (this) {
       case SearchStatus.initial:
@@ -51,8 +50,6 @@ extension SearchStatusX on SearchStatus {
         return failure();
       case SearchStatus.empty:
         return empty();
-      case SearchStatus.add:
-        return add();
     }
   }
 }

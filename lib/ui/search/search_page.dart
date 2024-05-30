@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/application.dart';
+import 'package:showtrack/core/services/application.dart';
 import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
 import 'package:showtrack/ui/search/widgets/search_field.dart';
-import 'package:showtrack/ui/search/widgets/show_preview_card.dart';
+import 'package:showtrack/ui/search/widgets/show_search_card.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -21,11 +21,13 @@ class SearchPage extends StatelessWidget {
         create: (context) => getIt<SearchBloc>(),
         child: const Padding(
           padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SearchField(),
-              Expanded(child: SearchShowPresentation()),
-            ],
+          child: SafeArea(
+            child: Column(
+              children: [
+                SearchField(),
+                Expanded(child: SearchShowPresentation()),
+              ],
+            ),
           ),
         ),
       ),
@@ -49,15 +51,14 @@ class SearchShowPresentation extends StatelessWidget {
             child: CircularProgressIndicator(),
           ),
           empty: () => const Center(
-            child: Text('Nenhum resultado encontrado'),
+            child: Text('Nada para mostrar aqui'),
           ),
           success: () => ListView.builder(
             itemCount: bloc.state.result.length,
             itemBuilder: (context, index) {
-              return ShowPreviewCard(show: bloc.state.result[index].show);
+              return ShowSearchCard(show: bloc.state.result[index].show);
             },
           ),
-          add: () => const SizedBox(),
           failure: () => const Center(
             child: Text('Erro ao buscar série'),
           ),

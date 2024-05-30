@@ -10,15 +10,6 @@ class ShowPreviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Image.network(show.image?.medium ?? ''),
-        title: Text(show.name),
-        trailing: IconButton(
-          icon: const Icon(Icons.add),
-          onPressed: () {},
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }
