@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:showtrack/core/application.dart';
+import 'package:showtrack/core/services/application.dart';
 import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/ui/splash/splash_page.dart';
 

@@ -13,7 +13,7 @@ class Application {
   /// Inicialização das definições do app
   static Future initialize() async {
     await _hiveInit();
-    await _injects();
+    await _bindings();
   }
 
   static Future<void> _hiveInit() async {
@@ -22,13 +22,13 @@ class Application {
     HiveAdapters.init();
   }
 
-  static Future<void> _injects() async {
+  static Future<void> _bindings() async {
     // Registro do Dio
-    getIt.registerSingleton<DioCreator>(DioCreator());
+    getIt.registerLazySingleton<DioCreator>(() => DioCreator());
 
     // Inicialização e registro do TvShowRepository
     final tvShowRepository = await TvShowRepository.getInstance();
-    getIt.registerSingleton<TvShowRepository>(tvShowRepository);
+    getIt.registerLazySingleton<TvShowRepository>(() => tvShowRepository);
 
     // Registro de blocs
     getIt.registerFactory<SearchBloc>(() => SearchBloc());
