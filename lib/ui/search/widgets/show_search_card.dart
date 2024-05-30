@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/data/model/show.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
+import 'package:showtrack/ui/widgets/banner_widget.dart';
 
 class ShowSearchCard extends StatefulWidget {
   final Show show;
@@ -32,18 +33,8 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
-            width: 100,
-            height: 150,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: widget.show.image?.medium != null
-                    ? NetworkImage(widget.show.image!.medium!)
-                    : const AssetImage('assets/images/placeholder.png')
-                        as ImageProvider,
-                fit: BoxFit.cover,
-              ),
-            ),
+          BannerWidget(
+            url: widget.show.image?.medium ?? '',
           ),
           Expanded(
             child: Padding(
