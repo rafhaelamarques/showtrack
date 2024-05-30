@@ -1,10 +1,14 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'links.g.dart';
 
 @JsonSerializable()
+@HiveType(typeId: 5)
 class Links {
+  @HiveField(0)
   LinkEpisode? previousepisode;
+  @HiveField(1)
   LinkEpisode? nextepisode;
 
   Links({
@@ -18,8 +22,11 @@ class Links {
 }
 
 @JsonSerializable()
+@HiveType(typeId: 6)
 class LinkEpisode {
+  @HiveField(0)
   String? href;
+  @HiveField(1)
   String? name;
 
   LinkEpisode({

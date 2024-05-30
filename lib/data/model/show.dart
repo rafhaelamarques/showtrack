@@ -12,7 +12,7 @@ part 'show.g.dart';
 
 @JsonSerializable()
 @HiveType(typeId: 0)
-class Show extends HiveObject {
+class Show {
   @HiveField(0)
   int id;
   @HiveField(1)
@@ -31,8 +31,11 @@ class Show extends HiveObject {
   Channel? webChannel;
   @HiveField(8)
   ImageBanner? image;
+  @HiveField(9)
   String? summary;
+  @HiveField(10)
   Links? lLinks;
+  @HiveField(11)
   Embedded? eEmbedded;
 
   Show({
@@ -53,6 +56,9 @@ class Show extends HiveObject {
   factory Show.fromJson(Map<String, dynamic> json) => _$ShowFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShowToJson(this);
+
+  String get formattedSummary =>
+      summary?.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), '') ?? '';
 
   StatusEnum getStatusEnum() {
     switch (status) {

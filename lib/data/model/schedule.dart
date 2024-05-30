@@ -1,10 +1,14 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'schedule.g.dart';
 
 @JsonSerializable()
+@HiveType(typeId: 1)
 class Schedule {
+  @HiveField(0)
   String? time;
+  @HiveField(1)
   List<String>? days;
 
   Schedule({
