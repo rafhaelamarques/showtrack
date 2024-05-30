@@ -7,11 +7,11 @@ class TvShowRepository {
   TvShowRepository._load();
 
   static Future<void> init() async {
-    if (Hive.isBoxOpen('tv_show')) {
-      _box = Hive.box('tv_show');
+    if (Hive.isBoxOpen('shows')) {
+      _box = Hive.box('shows');
       return;
     }
-    _box = await Hive.openBox('tv_show');
+    _box = await Hive.openBox('shows');
   }
 
   static Future<TvShowRepository> getInstance() async {
