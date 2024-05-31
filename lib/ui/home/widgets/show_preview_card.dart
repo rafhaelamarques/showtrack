@@ -47,7 +47,7 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              blurRadius: 8,
+              blurRadius: 4,
               spreadRadius: 2,
               color: gray.withOpacity(0.6),
               offset: const Offset(0, 2),

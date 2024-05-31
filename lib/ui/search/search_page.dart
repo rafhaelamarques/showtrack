@@ -12,32 +12,36 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Adicionar'),
-        backgroundColor: lightRed,
-        foregroundColor: white,
-        leading: IconButton(
-          icon: Theme.of(context).platform == TargetPlatform.iOS
-              ? const Icon(Icons.arrow_back_ios)
-              : const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-                (MaterialPageRoute(builder: (context) => const HomePage())),
-                (route) => false);
-          },
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Adicionar'),
+          backgroundColor: midRed,
+          foregroundColor: white,
+          leading: IconButton(
+            icon: Theme.of(context).platform == TargetPlatform.iOS
+                ? const Icon(Icons.arrow_back_ios)
+                : const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                  (MaterialPageRoute(builder: (context) => const HomePage())),
+                  (route) => false);
+            },
+          ),
         ),
-      ),
-      body: BlocProvider(
-        create: (context) => getIt<SearchBloc>(),
-        child: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: SafeArea(
-            child: Column(
-              children: [
-                SearchField(),
-                Expanded(child: SearchShowPresentation()),
-              ],
+        backgroundColor: white,
+        body: BlocProvider(
+          create: (context) => getIt<SearchBloc>(),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  SearchField(),
+                  Expanded(child: SearchShowPresentation()),
+                ],
+              ),
             ),
           ),
         ),

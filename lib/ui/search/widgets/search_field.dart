@@ -14,6 +14,15 @@ class SearchField extends StatelessWidget {
 
     return TextField(
       controller: controller,
+      onSubmitted: (value) {
+        controller.text.isNotEmpty
+            ? bloc.add(SearchingEvent(query: controller.text))
+            : Fluttertoast.showToast(
+                msg: 'Que tal digitar algo?',
+                backgroundColor: gray,
+                textColor: white,
+              );
+      },
       decoration: InputDecoration(
         hintText: 'Pesquisar nova série',
         border: OutlineInputBorder(

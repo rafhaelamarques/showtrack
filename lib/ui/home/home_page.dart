@@ -15,9 +15,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Início'),
-        backgroundColor: lightRed,
+        backgroundColor: midRed,
         foregroundColor: white,
       ),
+      backgroundColor: white,
       body: RepositoryProvider(
         create: (context) => TvShowRepository,
         child: BlocProvider(
@@ -54,7 +55,7 @@ class HomeShowPresentation extends StatelessWidget {
           ),
           empty: () => const Center(
             child: Text(
-              'Hmm.. parece que não temos séries para mostrar. \nQue tal tentar adicionar algumas?',
+              'Hmm.. parece que não temos séries para mostrar. \nQue tal adicionar algumas?',
               textAlign: TextAlign.center,
             ),
           ),
