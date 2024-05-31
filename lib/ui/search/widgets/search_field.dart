@@ -19,7 +19,7 @@ class SearchField extends StatelessWidget {
             ? bloc.add(SearchingEvent(query: controller.text))
             : Fluttertoast.showToast(
                 msg: 'Que tal digitar algo?',
-                backgroundColor: gray,
+                backgroundColor: grey,
                 textColor: white,
               );
       },
@@ -49,7 +49,7 @@ class SearchField extends StatelessWidget {
                     ? bloc.add(SearchingEvent(query: controller.text))
                     : Fluttertoast.showToast(
                         msg: 'Que tal digitar algo?',
-                        backgroundColor: gray,
+                        backgroundColor: grey,
                         textColor: white,
                       );
               },

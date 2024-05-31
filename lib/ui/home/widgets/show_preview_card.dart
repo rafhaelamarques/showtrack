@@ -49,7 +49,7 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
             BoxShadow(
               blurRadius: 4,
               spreadRadius: 2,
-              color: gray.withOpacity(0.6),
+              color: grey.withOpacity(0.6),
               offset: const Offset(0, 2),
             ),
           ],
@@ -85,7 +85,7 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
                             onPressed: () {
                               Fluttertoast.showToast(
                                 msg: 'Série removida',
-                                backgroundColor: gray,
+                                backgroundColor: grey,
                                 textColor: white,
                               );
                               _homeBloc.add(HomeRemoveShowEvent(widget.show));

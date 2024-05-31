@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/data/model/channel.dart';
 import 'package:showtrack/data/model/embedded.dart';
 import 'package:showtrack/data/model/image_banner.dart';
@@ -83,13 +84,13 @@ class Show {
   Color getStatusColor() {
     switch (getStatusEnum()) {
       case StatusEnum.emExibicao:
-        return Colors.green;
+        return green;
       case StatusEnum.finalizada:
-        return Colors.grey;
+        return grey;
       case StatusEnum.emDesenvolvimento:
-        return Colors.orange;
+        return orange;
       default:
-        return Colors.grey;
+        return midRed;
     }
   }
 }

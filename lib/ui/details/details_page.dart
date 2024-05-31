@@ -144,7 +144,7 @@ class DetailsLayout extends StatelessWidget {
                     show.formattedSummary,
                     style: const TextStyle(
                       fontSize: 16,
-                      color: gray,
+                      color: grey,
                     ),
                   ),
                 ],

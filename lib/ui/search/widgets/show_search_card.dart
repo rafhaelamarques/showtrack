@@ -100,7 +100,7 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: gray,
+                      color: grey,
                     ),
                   ),
                 ],
