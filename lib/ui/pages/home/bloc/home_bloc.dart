@@ -1,17 +1,18 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/services/application.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/repositories/tv_show_repository.dart';
+import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final TvShowRepository _showRepository = getIt<TvShowRepository>();
+  final ITvShowRepository showRepository;
 
-  HomeBloc() : super(const HomeState()) {
+  HomeBloc({
+    required this.showRepository,
+  }) : super(const HomeState()) {
     on<HomeLoadEvent>(
       (event, emit) async {
         await _loadShows(emit);
@@ -29,7 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(status: HomeStatus.loading));
 
     try {
-      final shows = await _showRepository.getShows();
+      final shows = await showRepository.getShows();
       if (shows.isEmpty) {
         emit(state.copyWith(status: HomeStatus.empty));
       } else {
@@ -45,7 +46,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _deleteShow(Show show, Emitter<HomeState> emit) async {
-    await _showRepository.deleteShow(show);
+    await showRepository.deleteShow(show);
     await _loadShows(emit);
   }
 }

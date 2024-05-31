@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/data/model/channel.dart';
 import 'package:showtrack/data/model/embedded.dart';
 import 'package:showtrack/data/model/image_banner.dart';
 import 'package:showtrack/data/model/links.dart';
 import 'package:showtrack/data/model/rating.dart';
 import 'package:showtrack/data/model/schedule.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 
 part 'show.g.dart';
 
@@ -60,12 +60,16 @@ class Show {
 
   Map<String, dynamic> toJson() => _$ShowToJson(this);
 
+  // Remove as tags HTML da sinopse
   String get formattedSummary =>
       summary?.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), '') ?? '';
 
+  // examplo: 60 min
   String get runtime =>
       averageRuntime != null ? '$averageRuntime min' : 'Sem informações';
 
+  // Transforma o status da série para um enum
+  // com valores em português
   StatusEnum getStatusEnum() {
     switch (status) {
       case 'Running':

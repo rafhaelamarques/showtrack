@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/ui/details/details_page.dart';
-import 'package:showtrack/ui/home/bloc/home_bloc.dart';
+import 'package:showtrack/ui/pages/details/details_page.dart';
+import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 import 'package:showtrack/ui/widgets/banner_widget.dart';
 
 class ShowPreviewCard extends StatefulWidget {

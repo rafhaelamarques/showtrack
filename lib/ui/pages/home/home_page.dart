@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/services/application.dart';
-import 'package:showtrack/core/styles/colors.dart';
+import 'package:showtrack/core/application.dart';
 import 'package:showtrack/data/repositories/tv_show_repository.dart';
-import 'package:showtrack/ui/home/bloc/home_bloc.dart';
-import 'package:showtrack/ui/home/widgets/add_show_button.dart';
-import 'package:showtrack/ui/home/widgets/show_preview_card.dart';
+import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
+import 'package:showtrack/ui/pages/home/widgets/add_show_button.dart';
+import 'package:showtrack/ui/pages/home/widgets/show_preview_card.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

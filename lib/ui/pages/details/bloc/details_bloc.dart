@@ -8,9 +8,11 @@ part 'details_event.dart';
 part 'details_state.dart';
 
 class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
-  final TvShowClient _client = TvShowClient();
+  final TvShowClient showClient;
 
-  DetailsBloc() : super(const DetailsState()) {
+  DetailsBloc({
+    required this.showClient,
+  }) : super(const DetailsState()) {
     on<DetailsLoadEvent>((event, emit) async {
       await _fetchShow(event.showId, emit);
     });
@@ -20,7 +22,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     emit(state.copyWith(status: DetailsStatus.loading));
 
     try {
-      final show = await _client.getShowDetails(id: showId);
+      final show = await showClient.getShowDetails(id: showId);
       emit(state.copyWith(
         status: DetailsStatus.success,
         show: show,

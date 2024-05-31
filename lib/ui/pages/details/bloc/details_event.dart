@@ -1,7 +1,7 @@
 part of 'details_bloc.dart';
 
 @immutable
-class DetailsEvent extends Equatable {
+abstract class DetailsEvent extends Equatable {
   const DetailsEvent();
 
   @override

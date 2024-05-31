@@ -1,7 +1,7 @@
 part of 'search_bloc.dart';
 
 @immutable
-class SearchEvent extends Equatable {
+abstract class SearchEvent extends Equatable {
   const SearchEvent();
 
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:showtrack/core/styles/colors.dart';
-import 'package:showtrack/ui/search/bloc/search_bloc.dart';
+import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:showtrack/ui/home/home_page.dart';
+import 'package:showtrack/ui/pages/home/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -29,10 +29,12 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
+            Expanded(
+              flex: 2,
+              child: Image.asset(
+                'assets/images/logo.png',
+              ),
             ),
-            const SizedBox(height: 100),
             const CircularProgressIndicator(),
           ],
         ),

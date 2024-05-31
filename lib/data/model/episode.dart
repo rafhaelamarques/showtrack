@@ -34,6 +34,8 @@ class Episode {
 
   Map<String, dynamic> toJson() => _$EpisodeToJson(this);
 
+  // exemplo: Episode 7 x Season 2 \n Game of Thrones
+  // ou apenas Game of Thrones
   @override
   String toString() {
     return season != null && number != null
@@ -46,6 +48,7 @@ class Episode {
     return DateFormat('dd/MM/yyyy').format(DateTime.parse(airdate!));
   }
 
+  // exemplo: 01/08/2024 às 20:00 ou 01/08/2024
   String get dateTime {
     if (airdate == "" && airtime == "") return '';
     return airtime != "" ? '$dateFormatted às $airtime' : dateFormatted;

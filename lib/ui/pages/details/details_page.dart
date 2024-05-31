@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/services/application.dart';
-import 'package:showtrack/core/styles/colors.dart';
+import 'package:showtrack/core/application.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/ui/details/bloc/details_bloc.dart';
+import 'package:showtrack/ui/pages/details/bloc/details_bloc.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 import 'package:showtrack/ui/widgets/banner_widget.dart';
 
 class DetailsPage extends StatelessWidget {

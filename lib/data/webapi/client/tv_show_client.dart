@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:showtrack/core/services/application.dart';
+import 'package:showtrack/core/application.dart';
 import 'package:showtrack/data/model/search.dart';
 import 'package:showtrack/data/model/show.dart';
 import 'package:showtrack/data/webapi/dio/dio_creator.dart';

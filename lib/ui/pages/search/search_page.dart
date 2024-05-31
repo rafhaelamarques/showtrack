@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:showtrack/core/services/application.dart';
-import 'package:showtrack/core/styles/colors.dart';
-import 'package:showtrack/ui/home/home_page.dart';
-import 'package:showtrack/ui/search/bloc/search_bloc.dart';
-import 'package:showtrack/ui/search/widgets/search_field.dart';
-import 'package:showtrack/ui/search/widgets/show_search_card.dart';
+import 'package:showtrack/core/application.dart';
+import 'package:showtrack/ui/pages/home/home_page.dart';
+import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
+import 'package:showtrack/ui/pages/search/widgets/search_field.dart';
+import 'package:showtrack/ui/pages/search/widgets/show_search_card.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

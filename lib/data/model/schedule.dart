@@ -21,11 +21,18 @@ class Schedule {
 
   Map<String, dynamic> toJson() => _$ScheduleToJson(this);
 
+  // examplo: 21:00 | Segunda-feira, Terça-feira
   @override
   String toString() {
     return time != '' && days != null
         ? '$time | $formattedDays'
         : 'Sem informações';
+  }
+
+  // Transforma os dias da semana vindos da API para o português
+  String get formattedDays {
+    if (days == null) return '';
+    return days!.map((day) => fromEnglish(day)).join(', ');
   }
 
   String fromEnglish(String day) {
@@ -47,11 +54,6 @@ class Schedule {
       default:
         return '';
     }
-  }
-
-  String get formattedDays {
-    if (days == null) return '';
-    return days!.map((day) => fromEnglish(day)).join(', ');
   }
 }
 

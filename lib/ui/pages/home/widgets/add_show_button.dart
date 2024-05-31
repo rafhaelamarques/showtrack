@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:showtrack/core/styles/colors.dart';
-import 'package:showtrack/ui/search/search_page.dart';
+import 'package:showtrack/ui/pages/search/search_page.dart';
+import 'package:showtrack/ui/styles/colors.dart';
 
 class AddShowButton extends StatelessWidget {
   const AddShowButton({super.key});
