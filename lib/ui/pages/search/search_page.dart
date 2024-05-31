@@ -63,7 +63,7 @@ class SearchShowPresentation extends StatelessWidget {
             child: CircularProgressIndicator(),
           ),
           empty: () => const Center(
-            child: Text('Nada para mostrar aqui'),
+            child: Text('Nenhum resultado encontrado'),
           ),
           success: () {
             List<Widget> children =

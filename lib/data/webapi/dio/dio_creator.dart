@@ -12,7 +12,7 @@ class DioCreator {
 
   /// Dio base com algumas configurações padrão
   /// permitindo url e interceptors customizados
-  Dio create({
+  Dio _create({
     required String baseUrl,
     List<Interceptor>? interceptors,
   }) {
@@ -28,7 +28,5 @@ class DioCreator {
   }
 
   /// Dio usado para a API TVMaze
-  Dio tvMaze() {
-    return create(baseUrl: 'https://api.tvmaze.com');
-  }
+  Dio tvMaze() => _create(baseUrl: 'https://api.tvmaze.com');
 }

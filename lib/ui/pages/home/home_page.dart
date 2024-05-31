@@ -66,7 +66,7 @@ class HomeShowPresentation extends StatelessWidget {
             },
           ),
           failure: () => const Center(
-            child: Text('Erro ao carregar as séries'),
+            child: Text('Erro ao carregar suas séries'),
           ),
         );
       },

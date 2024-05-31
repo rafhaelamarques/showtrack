@@ -5,7 +5,6 @@ import 'package:showtrack/core/hive_adapters.dart';
 import 'package:showtrack/data/repositories/tv_show_repository.dart';
 import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
 import 'package:showtrack/data/webapi/client/tv_show_client.dart';
-import 'package:showtrack/data/webapi/dio/dio_creator.dart';
 import 'package:showtrack/ui/pages/details/bloc/details_bloc.dart';
 import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
@@ -29,9 +28,6 @@ class Application {
   }
 
   static Future<void> _clientsInit() async {
-    // Registro do Dio
-    getIt.registerLazySingleton<DioCreator>(() => DioCreator());
-
     // Registro do TvShowClient
     getIt.registerLazySingleton<TvShowClient>(() => TvShowClient());
   }
