@@ -34,9 +34,11 @@ class Show {
   @HiveField(9)
   String? summary;
   @HiveField(10)
-  Links? lLinks;
+  @JsonKey(name: '_links')
+  Links? links;
   @HiveField(11)
-  Embedded? eEmbedded;
+  @JsonKey(name: '_embedded')
+  Embedded? embedded;
 
   Show({
     required this.id,
@@ -49,8 +51,8 @@ class Show {
     this.webChannel,
     this.image,
     this.summary,
-    this.lLinks,
-    this.eEmbedded,
+    this.links,
+    this.embedded,
   });
 
   factory Show.fromJson(Map<String, dynamic> json) => _$ShowFromJson(json);
@@ -70,6 +72,8 @@ class Show {
       case 'Ended':
         return StatusEnum.finalizada;
       case 'To Be Determined':
+        return StatusEnum.emExibicao;
+      case 'In Development':
         return StatusEnum.emDesenvolvimento;
       default:
         return StatusEnum.desconhecido;

@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'episode.g.dart';
@@ -32,4 +33,21 @@ class Episode {
       _$EpisodeFromJson(json);
 
   Map<String, dynamic> toJson() => _$EpisodeToJson(this);
+
+  @override
+  String toString() {
+    return season != null && number != null
+        ? 'Episode $number x Season $season \n $name'
+        : name;
+  }
+
+  String get dateFormatted {
+    if (airdate == "") return '';
+    return DateFormat('dd/MM/yyyy').format(DateTime.parse(airdate!));
+  }
+
+  String get dateTime {
+    if (airdate == "" && airtime == "") return '';
+    return airtime != "" ? '$dateFormatted às $airtime' : dateFormatted;
+  }
 }

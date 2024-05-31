@@ -24,7 +24,47 @@ class Schedule {
   @override
   String toString() {
     return time != '' && days != null
-        ? '$time | ${days?.join(', ')}'
+        ? '$time | $formattedDays'
         : 'Sem informações';
   }
+
+  String fromEnglish(String day) {
+    switch (day) {
+      case 'Monday':
+        return DayOfWeek.monday.value;
+      case 'Tuesday':
+        return DayOfWeek.tuesday.value;
+      case 'Wednesday':
+        return DayOfWeek.wednesday.value;
+      case 'Thursday':
+        return DayOfWeek.thursday.value;
+      case 'Friday':
+        return DayOfWeek.friday.value;
+      case 'Saturday':
+        return DayOfWeek.saturday.value;
+      case 'Sunday':
+        return DayOfWeek.sunday.value;
+      default:
+        return '';
+    }
+  }
+
+  String get formattedDays {
+    if (days == null) return '';
+    return days!.map((day) => fromEnglish(day)).join(', ');
+  }
+}
+
+enum DayOfWeek {
+  monday('Segunda-feira'),
+  tuesday('Terça-feira'),
+  wednesday('Quarta-feira'),
+  thursday('Quinta-feira'),
+  friday('Sexta-feira'),
+  saturday('Sábado'),
+  sunday('Domingo');
+
+  final String value;
+
+  const DayOfWeek(this.value);
 }
