@@ -9,26 +9,27 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final TvShowRepository _showRepository = getIt<TvShowRepository>();
+
   HomeBloc() : super(const HomeState()) {
     on<HomeLoadEvent>(
       (event, emit) async {
         await _loadShows(emit);
       },
     );
-    on<HomeSelectedEvent>((event, emit) {
-      emit(state.copyWith(
-        status: HomeStatus.selected,
-        selectedShowId: event.showId,
-      ));
-    });
+
+    on<HomeRemoveShowEvent>(
+      (event, emit) async {
+        await _deleteShow(event.show, emit);
+      },
+    );
   }
 
   Future<void> _loadShows(Emitter<HomeState> emit) async {
     emit(state.copyWith(status: HomeStatus.loading));
-    final showRepository = getIt<TvShowRepository>();
 
     try {
-      final shows = await showRepository.getShows();
+      final shows = await _showRepository.getShows();
       if (shows.isEmpty) {
         emit(state.copyWith(status: HomeStatus.empty));
       } else {
@@ -41,5 +42,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       debugPrint(e.toString());
       emit(state.copyWith(status: HomeStatus.failure));
     }
+  }
+
+  Future<void> _deleteShow(Show show, Emitter<HomeState> emit) async {
+    await _showRepository.deleteShow(show);
+    await _loadShows(emit);
   }
 }

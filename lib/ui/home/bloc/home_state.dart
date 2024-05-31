@@ -29,7 +29,7 @@ class HomeState extends Equatable {
 }
 
 // Possiveis estados da home page e seus componentes
-enum HomeStatus { initial, loading, success, failure, empty, selected }
+enum HomeStatus { initial, loading, success, failure, empty }
 
 extension HomeStatusX on HomeStatus {
   T when<T>({
@@ -38,7 +38,6 @@ extension HomeStatusX on HomeStatus {
     required T Function() success,
     required T Function() failure,
     required T Function() empty,
-    required T Function() selected,
   }) {
     switch (this) {
       case HomeStatus.initial:
@@ -51,8 +50,6 @@ extension HomeStatusX on HomeStatus {
         return failure();
       case HomeStatus.empty:
         return empty();
-      case HomeStatus.selected:
-        return selected();
     }
   }
 }

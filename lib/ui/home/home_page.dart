@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Início'),
         backgroundColor: lightRed,
         foregroundColor: white,
       ),
@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   SizedBox(height: 20),
                   AddShowButton(),
+                  SizedBox(height: 20),
                   Expanded(
                     child: HomeShowPresentation(),
                   ),
@@ -66,7 +67,6 @@ class HomeShowPresentation extends StatelessWidget {
           failure: () => const Center(
             child: Text('Erro ao carregar as séries'),
           ),
-          selected: () => const SizedBox(),
         );
       },
     );

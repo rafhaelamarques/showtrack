@@ -10,13 +10,11 @@ class HomeEvent extends Equatable {
 
 class HomeLoadEvent extends HomeEvent {}
 
-class HomeSelectedEvent extends HomeEvent {
-  final int showId;
+class HomeRemoveShowEvent extends HomeEvent {
+  final Show show;
 
-  const HomeSelectedEvent({
-    required this.showId,
-  });
+  const HomeRemoveShowEvent(this.show);
 
   @override
-  List<Object> get props => [showId];
+  List<Object> get props => [show];
 }
