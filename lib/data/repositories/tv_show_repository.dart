@@ -19,6 +19,10 @@ class TvShowRepository {
     return TvShowRepository._load();
   }
 
+  Future<List<Show>> getShows() async {
+    return _box.get('shows', defaultValue: <Show>[]).cast<Show>();
+  }
+
   Future<void> saveShow(Show show) async {
     List<Show> shows = await getShows();
     if (shows.any((element) => element.id == show.id)) {
@@ -27,10 +31,6 @@ class TvShowRepository {
       shows.add(show);
     }
     await _box.put('shows', shows);
-  }
-
-  Future<List<Show>> getShows() async {
-    return _box.get('shows', defaultValue: <Show>[]).cast<Show>();
   }
 
   Future<void> deleteShow(Show show) async {
