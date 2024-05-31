@@ -32,4 +32,10 @@ class TvShowRepository {
   Future<List<Show>> getShows() async {
     return _box.get('shows', defaultValue: <Show>[]).cast<Show>();
   }
+
+  Future<void> deleteShow(Show show) async {
+    List<Show> shows = await getShows();
+    shows.removeWhere((element) => element.id == show.id);
+    await _box.put('shows', shows);
+  }
 }
