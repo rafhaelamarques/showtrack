@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:showtrack/core/services/hive_adapters.dart';
 import 'package:showtrack/data/repositories/tv_show_repository.dart';
 import 'package:showtrack/data/webapi/dio/dio_creator.dart';
+import 'package:showtrack/ui/details/bloc/details_bloc.dart';
 import 'package:showtrack/ui/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
 
@@ -33,5 +34,6 @@ class Application {
     // Registro de blocs
     getIt.registerFactory<SearchBloc>(() => SearchBloc());
     getIt.registerFactory<HomeBloc>(() => HomeBloc());
+    getIt.registerFactory<DetailsBloc>(() => DetailsBloc());
   }
 }

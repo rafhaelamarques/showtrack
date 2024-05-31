@@ -11,10 +11,9 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final TvShowClient client = TvShowClient();
-  final TvShowRepository repository = getIt<TvShowRepository>();
-  final TextEditingController searchController = TextEditingController();
-  late List<Search> result;
+  final TvShowClient _client = TvShowClient();
+  final TvShowRepository _repository = getIt<TvShowRepository>();
+  late List<Search> _result;
   late List<Show> addedShows;
 
   SearchBloc() : super(const SearchState()) {
@@ -24,7 +23,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
     );
     on<SearchAddEvent>((event, emit) {
-      repository.saveShow(event.show);
+      _repository.saveShow(event.show);
       emit(state.copyWith(status: SearchStatus.add));
     });
   }
@@ -34,13 +33,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     await _getAddedShows();
 
     try {
-      result = await client.searchShows(q: query.trim());
-      if (result.isEmpty) {
+      _result = await _client.searchShows(q: query.trim());
+      if (_result.isEmpty) {
         emit(state.copyWith(status: SearchStatus.empty));
       } else {
         emit(state.copyWith(
           status: SearchStatus.success,
-          result: result,
+          result: _result,
         ));
       }
     } catch (e) {
@@ -50,6 +49,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   Future<void> _getAddedShows() async {
-    addedShows = await repository.getShows();
+    addedShows = await _repository.getShows();
   }
 }

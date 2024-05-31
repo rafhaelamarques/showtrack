@@ -17,12 +17,12 @@ class ShowSearchCard extends StatefulWidget {
 }
 
 class _ShowSearchCardState extends State<ShowSearchCard> {
-  late SearchBloc _bloc;
+  late SearchBloc _searchBloc;
 
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of<SearchBloc>(context);
+    _searchBloc = BlocProvider.of<SearchBloc>(context);
   }
 
   @override
@@ -58,11 +58,11 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
                       ),
                       IconButton(
                         onPressed: () {
-                          _bloc.add(SearchAddEvent(show: widget.show));
+                          _searchBloc.add(SearchAddEvent(show: widget.show));
                           setState(() {});
                         },
                         icon: Icon(
-                          _bloc.addedShows.any(
+                          _searchBloc.addedShows.any(
                                   (element) => element.id == widget.show.id)
                               ? Icons.check
                               : Icons.add,

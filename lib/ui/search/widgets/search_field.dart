@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:showtrack/core/styles/colors.dart';
 import 'package:showtrack/ui/search/bloc/search_bloc.dart';
-import 'package:showtrack/ui/widgets/toast.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({super.key});
@@ -9,7 +10,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<SearchBloc>(context);
-    final TextEditingController controller = bloc.searchController;
+    final TextEditingController controller = TextEditingController();
 
     return TextField(
       controller: controller,
@@ -24,11 +25,12 @@ class SearchField extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.clear),
               onPressed: () {
-                if (controller.text.isNotEmpty &&
-                    bloc.state.result.isNotEmpty) {
-                  controller.clear();
-                  bloc.add(SearchingEvent(query: controller.text));
-                }
+                controller.text.isNotEmpty
+                    ? controller.clear()
+                    : (bloc.state.result.isNotEmpty &&
+                            controller.text.isNotEmpty)
+                        ? bloc.add(SearchingEvent(query: controller.text))
+                        : null;
               },
             ),
             IconButton(
@@ -36,9 +38,10 @@ class SearchField extends StatelessWidget {
               onPressed: () {
                 controller.text.isNotEmpty
                     ? bloc.add(SearchingEvent(query: controller.text))
-                    : BaseToast.showToast(
-                        context: context,
-                        message: 'Que tal digitar algo?',
+                    : Fluttertoast.showToast(
+                        msg: 'Que tal digitar algo?',
+                        backgroundColor: gray,
+                        textColor: white,
                       );
               },
             ),
