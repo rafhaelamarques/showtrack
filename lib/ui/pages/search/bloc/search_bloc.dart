@@ -27,9 +27,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         await _fetchShows(event.query, emit);
       },
     );
-    on<SearchAddEvent>((event, emit) {
-      showRepository.saveShow(event.show);
-      emit(state.copyWith(status: SearchStatus.add));
+    on<SearchAddEvent>((event, emit) async {
+      await _addShow(event.show, emit);
     });
   }
 
@@ -51,6 +50,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       debugPrint(e.toString());
       emit(state.copyWith(status: SearchStatus.failure));
     }
+  }
+
+  Future<void> _addShow(Show show, Emitter<SearchState> emit) async {
+    await showRepository.saveShow(show);
+    _getAddedShows();
+    emit(state.copyWith(status: SearchStatus.add));
   }
 
   Future<void> _getAddedShows() async {
