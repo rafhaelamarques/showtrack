@@ -14,15 +14,11 @@ class DioCreator {
   /// permitindo url e interceptors customizados
   Dio _create({
     required String baseUrl,
-    List<Interceptor>? interceptors,
   }) {
     Dio dio = Dio();
     dio.options.baseUrl = baseUrl;
     dio.options.contentType = Headers.jsonContentType;
     dio.interceptors.add(DioInterceptors());
-    if (interceptors != null) {
-      dio.interceptors.addAll(interceptors);
-    }
 
     return dio;
   }
