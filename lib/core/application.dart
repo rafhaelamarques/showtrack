@@ -13,32 +13,32 @@ final getIt = GetIt.instance;
 
 class Application {
   /// Inicialização das definições do app
-  static Future initialize() async {
-    await _hiveInit();
-    await _clientsInit();
-    await _repositoriesInit();
-    await _blocsInit();
+  static Future setup() async {
+    await _hiveSetup();
+    await _clientsSetup();
+    await _repositoriesSetup();
+    await _blocsSetup();
   }
 
-  static Future<void> _hiveInit() async {
+  static Future<void> _hiveSetup() async {
     // Inicialização do Hive e seus adapters
     final directory = await getApplicationDocumentsDirectory();
     Hive.init(directory.path);
     HiveAdapters.init();
   }
 
-  static Future<void> _clientsInit() async {
+  static Future<void> _clientsSetup() async {
     // Registro do TvShowClient
     getIt.registerLazySingleton<TvShowClient>(() => TvShowClient());
   }
 
-  static Future<void> _repositoriesInit() async {
+  static Future<void> _repositoriesSetup() async {
     // Inicialização e registro do TvShowRepository
     final tvShowRepository = await TvShowRepository.getInstance();
     getIt.registerLazySingleton<ITvShowRepository>(() => tvShowRepository);
   }
 
-  static Future<void> _blocsInit() async {
+  static Future<void> _blocsSetup() async {
     // Registro de blocs com bindings
     getIt.registerFactory<HomeBloc>(() => HomeBloc(
           showRepository: getIt<ITvShowRepository>(),

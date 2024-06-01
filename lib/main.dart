@@ -6,7 +6,7 @@ import 'package:showtrack/ui/styles/colors.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Application.initialize();
+  await Application.setup();
 
   runApp(const ShowTrackApp());
 }
