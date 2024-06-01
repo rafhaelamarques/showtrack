@@ -17,8 +17,8 @@ class SearchPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Adicionar'),
-          backgroundColor: midRed,
-          foregroundColor: white,
+          backgroundColor: AppColors.midRed,
+          foregroundColor: AppColors.white,
           leading: IconButton(
             icon: Theme.of(context).platform == TargetPlatform.iOS
                 ? const Icon(Icons.arrow_back_ios)
@@ -30,7 +30,7 @@ class SearchPage extends StatelessWidget {
             },
           ),
         ),
-        backgroundColor: white,
+        backgroundColor: AppColors.white,
         body: BlocProvider(
           create: (context) => getIt<SearchBloc>(),
           child: const Padding(

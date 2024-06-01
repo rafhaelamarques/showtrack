@@ -29,7 +29,7 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
-      color: white,
+      color: AppColors.white,
       elevation: 0,
       child: Row(
         children: [
@@ -66,7 +66,7 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
                                   (element) => element.id == widget.show.id)
                               ? Icons.check
                               : Icons.add,
-                          color: midRed,
+                          color: AppColors.midRed,
                           size: 32,
                         ),
                       )
@@ -100,7 +100,7 @@ class _ShowSearchCardState extends State<ShowSearchCard> {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: grey,
+                      color: AppColors.grey,
                     ),
                   ),
                 ],

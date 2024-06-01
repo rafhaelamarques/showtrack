@@ -43,13 +43,13 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
         decoration: BoxDecoration(
-          color: white,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
               blurRadius: 4,
               spreadRadius: 2,
-              color: grey.withOpacity(0.6),
+              color: AppColors.grey.withOpacity(0.6),
               offset: const Offset(0, 2),
             ),
           ],
@@ -85,14 +85,14 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
                             onPressed: () {
                               Fluttertoast.showToast(
                                 msg: 'Série removida',
-                                backgroundColor: grey,
-                                textColor: white,
+                                backgroundColor: AppColors.grey,
+                                textColor: AppColors.white,
                               );
                               _homeBloc.add(HomeRemoveShowEvent(widget.show));
                             },
                             icon: Icon(
                               MdiIcons.deleteOutline,
-                              color: midRed,
+                              color: AppColors.midRed,
                               size: 24,
                             ),
                           )
@@ -167,7 +167,7 @@ class IconTextWidget extends StatelessWidget {
         Icon(
           icon,
           size: 18,
-          color: color ?? midRed,
+          color: color ?? AppColors.midRed,
         ),
         const SizedBox(width: 4),
         Expanded(

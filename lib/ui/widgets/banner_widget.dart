@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:showtrack/ui/styles/images.dart';
 
 class BannerWidget extends StatelessWidget {
   final String url;
@@ -25,10 +26,8 @@ class BannerWidget extends StatelessWidget {
           image: url != ''
               ? NetworkImage(url)
               : useAlt
-                  ? const AssetImage('assets/images/placeholder_alt.png')
-                      as ImageProvider
-                  : const AssetImage('assets/images/placeholder.png')
-                      as ImageProvider,
+                  ? const AssetImage(AppImages.placeholderAlt) as ImageProvider
+                  : const AssetImage(AppImages.placeholder) as ImageProvider,
           fit: fit,
         ),
       ),

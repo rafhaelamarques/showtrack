@@ -18,8 +18,8 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detalhes'),
-        backgroundColor: midRed,
-        foregroundColor: white,
+        backgroundColor: AppColors.midRed,
+        foregroundColor: AppColors.white,
       ),
       body: BlocProvider(
         create: (context) =>
@@ -58,7 +58,7 @@ class DetailsLayout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
-              color: midRed,
+              color: AppColors.midRed,
               child: BannerWidget(
                 url: show.image?.original ?? '',
                 height: 300,
@@ -125,7 +125,7 @@ class DetailsLayout extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
-                        color: midRed,
+                        color: AppColors.midRed,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -144,7 +144,7 @@ class DetailsLayout extends StatelessWidget {
                     show.formattedSummary,
                     style: const TextStyle(
                       fontSize: 16,
-                      color: grey,
+                      color: AppColors.grey,
                     ),
                   ),
                 ],

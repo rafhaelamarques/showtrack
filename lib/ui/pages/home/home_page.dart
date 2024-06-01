@@ -15,10 +15,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Início'),
-        backgroundColor: midRed,
-        foregroundColor: white,
+        backgroundColor: AppColors.midRed,
+        foregroundColor: AppColors.white,
       ),
-      backgroundColor: white,
+      backgroundColor: AppColors.white,
       body: RepositoryProvider(
         create: (context) => TvShowRepository,
         child: BlocProvider(

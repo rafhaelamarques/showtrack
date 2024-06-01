@@ -88,13 +88,13 @@ class Show {
   Color getStatusColor() {
     switch (getStatusEnum()) {
       case StatusEnum.emExibicao:
-        return green;
+        return AppColors.green;
       case StatusEnum.finalizada:
-        return grey;
+        return AppColors.grey;
       case StatusEnum.emDesenvolvimento:
-        return orange;
+        return AppColors.orange;
       default:
-        return midRed;
+        return AppColors.midRed;
     }
   }
 }

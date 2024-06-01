@@ -10,8 +10,8 @@ class AddShowButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        foregroundColor: white,
-        backgroundColor: midRed,
+        foregroundColor: AppColors.white,
+        backgroundColor: AppColors.midRed,
         fixedSize: const Size(250, 50),
       ),
       onPressed: () {

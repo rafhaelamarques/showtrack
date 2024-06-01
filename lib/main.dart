@@ -19,7 +19,7 @@ class ShowTrackApp extends StatelessWidget {
     return MaterialApp(
       title: 'ShowTrack',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: midRed),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.midRed),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
