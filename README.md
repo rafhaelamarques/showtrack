@@ -31,6 +31,8 @@ Para pesquisa de séries e suas informações é utilizado a [TV Maze API](https
 Antes de executar o projeto, rode os seguintes comandos
 ```
 flutter pub get
+```
+```
 flutter run build_runner build
 ```
 
