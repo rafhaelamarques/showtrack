@@ -29,12 +29,10 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              flex: 2,
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
+            Image.asset(
+              'assets/images/logo.png',
             ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             const CircularProgressIndicator(),
           ],
         ),
