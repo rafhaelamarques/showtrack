@@ -33,7 +33,7 @@ Antes de executar o projeto, rode os seguintes comandos
 flutter pub get
 ```
 ```
-flutter run build_runner build
+flutter run build_runner build --delete-conflicting-outputs
 ```
 
 ## Authors

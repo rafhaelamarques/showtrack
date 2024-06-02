@@ -6,7 +6,7 @@ class DioInterceptors extends Interceptor {
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     debugPrint(
-        'REQUEST[${options.method}] => PATH: ${options.path}/${options.queryParameters['q']}');
+        'REQUEST[${options.method}] => PATH: ${options.baseUrl}${options.path}/${options.queryParameters['q']}');
 
     return super.onRequest(options, handler);
   }
@@ -15,7 +15,7 @@ class DioInterceptors extends Interceptor {
   Future onResponse(
       Response response, ResponseInterceptorHandler handler) async {
     debugPrint(
-        'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}/${response.requestOptions.queryParameters['q']}');
+        'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.baseUrl}${response.requestOptions.path}/${response.requestOptions.queryParameters['q']}');
 
     return super.onResponse(response, handler);
   }

@@ -9,7 +9,7 @@ part 'tv_show_client.g.dart';
 @RestApi()
 abstract class TvShowClient {
   factory TvShowClient() {
-    var dio = DioCreator().tvMaze();
+    var dio = DioCreator.instance.tvMaze();
     return _TvShowClient(dio);
   }
 

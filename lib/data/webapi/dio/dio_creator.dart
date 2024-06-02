@@ -5,7 +5,7 @@ class DioCreator {
   // Singleton
   static final DioCreator _instance = DioCreator._internal();
 
-  factory DioCreator() => _instance;
+  static DioCreator get instance => _instance;
 
   DioCreator._internal();
   // Singleton
