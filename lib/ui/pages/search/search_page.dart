@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/core/application.dart';
-import 'package:showtrack/ui/pages/home/home_page.dart';
+import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
 import 'package:showtrack/ui/pages/search/widgets/search_field.dart';
 import 'package:showtrack/ui/pages/search/widgets/show_search_card.dart';
@@ -12,36 +12,23 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Adicionar'),
-          backgroundColor: AppColors.midRed,
-          foregroundColor: AppColors.white,
-          leading: IconButton(
-            icon: Theme.of(context).platform == TargetPlatform.iOS
-                ? const Icon(Icons.arrow_back_ios)
-                : const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  (MaterialPageRoute(builder: (context) => const HomePage())),
-                  (route) => false);
-            },
-          ),
-        ),
-        backgroundColor: AppColors.white,
-        body: BlocProvider(
-          create: (context) => getIt<SearchBloc>(),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: SafeArea(
-              child: Column(
-                children: [
-                  SearchField(),
-                  Expanded(child: SearchShowPresentation()),
-                ],
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Adicionar'),
+        backgroundColor: AppColors.midRed,
+        foregroundColor: AppColors.white,
+      ),
+      backgroundColor: AppColors.white,
+      body: BlocProvider(
+        create: (context) => getIt<SearchBloc>(),
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SafeArea(
+            child: Column(
+              children: [
+                SearchField(),
+                Expanded(child: SearchShowPresentation()),
+              ],
             ),
           ),
         ),
@@ -55,9 +42,19 @@ class SearchShowPresentation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    final searchBloc = context.read<SearchBloc>();
+    final homeBloc = context.read<HomeBloc>();
+
+    return BlocConsumer(
+      bloc: searchBloc,
+      listenWhen: (previous, current) {
+        return searchBloc.state.status == SearchStatus.add;
+      },
+      listener: (context, state) {
+        homeBloc.add(HomeLoadEvent());
+      },
       builder: (context, state) {
-        return state.status.when(
+        return searchBloc.state.status.when(
           initial: () => const SizedBox(),
           searching: () => const Center(
             child: CircularProgressIndicator(),
@@ -66,8 +63,9 @@ class SearchShowPresentation extends StatelessWidget {
             child: Text('Nenhum resultado encontrado'),
           ),
           success: () {
-            List<Widget> children =
-                state.result.take(state.result.length).expand((element) {
+            List<Widget> children = searchBloc.state.result
+                .take(searchBloc.state.result.length)
+                .expand((element) {
               return [
                 ShowSearchCard(show: element.show),
               ];
