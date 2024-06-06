@@ -4,12 +4,10 @@ part of 'home_bloc.dart';
 class HomeState extends Equatable {
   final HomeStatus status;
   final List<Show> shows;
-  final int selectedShowId;
 
   const HomeState({
     this.status = HomeStatus.initial,
     this.shows = const [],
-    this.selectedShowId = 0,
   });
 
   @override
@@ -23,7 +21,6 @@ class HomeState extends Equatable {
     return HomeState(
       status: status ?? this.status,
       shows: shows ?? this.shows,
-      selectedShowId: selectedShowId ?? this.selectedShowId,
     );
   }
 }
