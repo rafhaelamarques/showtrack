@@ -61,7 +61,7 @@ class DetailsPresentation extends StatelessWidget {
               color: AppColors.midRed,
               child: BannerWidget(
                 url: show.image?.original ?? '',
-                height: 300,
+                height: MediaQuery.of(context).size.height * 0.5,
                 width: double.maxFinite,
                 fit: BoxFit.fitHeight,
                 useAlt: true,
