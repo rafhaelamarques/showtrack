@@ -47,8 +47,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         ));
       }
     } catch (e) {
-      debugPrint(e.toString());
       emit(state.copyWith(status: SearchStatus.failure));
+      throw(e.toString());
     }
   }
 

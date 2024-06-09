@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                   AddShowButton(),
                   SizedBox(height: 20),
                   Expanded(
-                    child: HomeShowPresentation(),
+                    child: HomeShowLayout(),
                   ),
                 ],
               )),
@@ -41,8 +41,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomeShowPresentation extends StatelessWidget {
-  const HomeShowPresentation({super.key});
+class HomeShowLayout extends StatelessWidget {
+  const HomeShowLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

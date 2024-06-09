@@ -21,7 +21,7 @@ class Schedule {
 
   Map<String, dynamic> toJson() => _$ScheduleToJson(this);
 
-  // examplo: 21:00 | Segunda-feira, Terça-feira
+  // exemplo: 21:00 | Segunda-feira, Terça-feira
   @override
   String toString() {
     return time != '' && days != null
@@ -36,20 +36,20 @@ class Schedule {
   }
 
   String fromEnglish(String day) {
-    switch (day) {
-      case 'Monday':
+    switch (day.toLowerCase()) {
+      case 'monday':
         return DayOfWeek.monday.value;
-      case 'Tuesday':
+      case 'tuesday':
         return DayOfWeek.tuesday.value;
-      case 'Wednesday':
+      case 'wednesday':
         return DayOfWeek.wednesday.value;
-      case 'Thursday':
+      case 'thursday':
         return DayOfWeek.thursday.value;
-      case 'Friday':
+      case 'friday':
         return DayOfWeek.friday.value;
-      case 'Saturday':
+      case 'saturday':
         return DayOfWeek.saturday.value;
-      case 'Sunday':
+      case 'sunday':
         return DayOfWeek.sunday.value;
       default:
         return '';

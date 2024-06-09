@@ -33,7 +33,7 @@ class DetailsPage extends StatelessWidget {
               loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-              success: () => DetailsLayout(show: state.show!),
+              success: () => DetailsPresentation(show: state.show!),
               failure: () => const Center(
                 child: Text('Erro ao carregar informações'),
               ),
@@ -45,9 +45,9 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-class DetailsLayout extends StatelessWidget {
+class DetailsPresentation extends StatelessWidget {
   final Show show;
-  const DetailsLayout({super.key, required this.show});
+  const DetailsPresentation({super.key, required this.show});
 
   @override
   Widget build(BuildContext context) {

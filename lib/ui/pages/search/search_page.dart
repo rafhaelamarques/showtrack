@@ -27,7 +27,7 @@ class SearchPage extends StatelessWidget {
             child: Column(
               children: [
                 SearchField(),
-                Expanded(child: SearchShowPresentation()),
+                Expanded(child: SearchShowLayout()),
               ],
             ),
           ),
@@ -37,8 +37,8 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-class SearchShowPresentation extends StatelessWidget {
-  const SearchShowPresentation({super.key});
+class SearchShowLayout extends StatelessWidget {
+  const SearchShowLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

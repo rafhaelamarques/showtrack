@@ -28,8 +28,8 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
         show: show,
       ));
     } catch (e) {
-      debugPrint(e.toString());
       emit(state.copyWith(status: DetailsStatus.failure));
+      throw(e.toString());
     }
   }
 }
