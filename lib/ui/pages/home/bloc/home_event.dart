@@ -18,3 +18,12 @@ class HomeRemoveShowEvent extends HomeEvent {
   @override
   List<Object> get props => [show];
 }
+
+class HomeFilterShowEvent extends HomeEvent {
+  final ShowStatusEnum status;
+
+  const HomeFilterShowEvent(this.status);
+
+  @override
+  List<Object> get props => [status];
+}

@@ -70,30 +70,30 @@ class Show {
 
   // Transforma o status da série para um enum
   // com valores em português
-  StatusEnum getStatusEnum() {
+  ShowStatusEnum getStatusEnum() {
     switch (status.toLowerCase()) {
       case 'running':
-        return StatusEnum.emExibicao;
+        return ShowStatusEnum.emExibicao;
       case 'ended':
-        return StatusEnum.finalizada;
+        return ShowStatusEnum.finalizada;
       case 'to be determined':
-        return StatusEnum.tba;
+        return ShowStatusEnum.tba;
       case 'in development':
-        return StatusEnum.emDesenvolvimento;
+        return ShowStatusEnum.emDesenvolvimento;
       default:
-        return StatusEnum.desconhecido;
+        return ShowStatusEnum.desconhecido;
     }
   }
 
   Color getStatusColor() {
     switch (getStatusEnum()) {
-      case StatusEnum.emExibicao:
+      case ShowStatusEnum.emExibicao:
         return AppColors.green;
-      case StatusEnum.finalizada:
+      case ShowStatusEnum.finalizada:
         return AppColors.grey;
-      case StatusEnum.tba:
+      case ShowStatusEnum.tba:
         return AppColors.orange;
-      case StatusEnum.emDesenvolvimento:
+      case ShowStatusEnum.emDesenvolvimento:
         return AppColors.orange;
       default:
         return AppColors.midRed;
@@ -101,7 +101,7 @@ class Show {
   }
 }
 
-enum StatusEnum {
+enum ShowStatusEnum {
   emExibicao('Em Exibição'),
   finalizada('Finalizada'),
   emDesenvolvimento('Em Desenvolvimento'),
@@ -110,5 +110,5 @@ enum StatusEnum {
 
   final String value;
 
-  const StatusEnum(this.value);
+  const ShowStatusEnum(this.value);
 }

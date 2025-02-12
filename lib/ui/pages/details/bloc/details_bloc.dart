@@ -20,7 +20,6 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
 
   Future<void> _fetchShow(int showId, Emitter<DetailsState> emit) async {
     emit(state.copyWith(status: DetailsStatus.loading));
-
     try {
       final show = await showClient.getShowDetails(id: showId);
       emit(state.copyWith(
@@ -29,7 +28,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
       ));
     } catch (e) {
       emit(state.copyWith(status: DetailsStatus.failure));
-      throw(e.toString());
+      throw (e.toString());
     }
   }
 }

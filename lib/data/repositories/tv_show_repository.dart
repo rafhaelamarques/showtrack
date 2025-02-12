@@ -44,4 +44,12 @@ class TvShowRepository implements ITvShowRepository {
     shows.removeWhere((element) => element.id == show.id);
     await _box.put('shows', shows);
   }
+
+  @override
+  Future<List<Show>> filterShows(ShowStatusEnum status) async {
+    List<Show> shows = await getShows();
+    return shows
+        .where((element) => element.status.contains(status.value))
+        .toList();
+  }
 }

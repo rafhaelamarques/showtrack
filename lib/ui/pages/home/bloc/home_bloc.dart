@@ -18,17 +18,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         await _loadShows(emit);
       },
     );
-
     on<HomeRemoveShowEvent>(
       (event, emit) async {
         await _deleteShow(event.show, emit);
+      },
+    );
+    on<HomeFilterShowEvent>(
+      (event, emit) async {
+        await _filterShows(event.status, emit);
       },
     );
   }
 
   Future<void> _loadShows(Emitter<HomeState> emit) async {
     emit(state.copyWith(status: HomeStatus.loading));
-
     try {
       final shows = await showRepository.getShows();
       if (shows.isEmpty) {
@@ -41,12 +44,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     } catch (e) {
       emit(state.copyWith(status: HomeStatus.failure));
-      throw(e.toString());
+      throw (e.toString());
     }
   }
 
   Future<void> _deleteShow(Show show, Emitter<HomeState> emit) async {
     await showRepository.deleteShow(show);
     await _loadShows(emit);
+  }
+
+  Future<void> _filterShows(
+      ShowStatusEnum status, Emitter<HomeState> emit) async {
+    emit(state.copyWith(status: HomeStatus.filtering));
+    try {
+      final shows = await showRepository.filterShows(status);
+      if (shows.isEmpty) {
+        emit(state.copyWith(status: HomeStatus.empty));
+      } else {
+        emit(state.copyWith(
+          status: HomeStatus.success,
+          shows: shows,
+        ));
+      }
+    } catch (e) {
+      emit(state.copyWith(status: HomeStatus.failure));
+      throw (e.toString());
+    }
   }
 }
