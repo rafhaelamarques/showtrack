@@ -49,7 +49,7 @@ class _ShowPreviewCardState extends State<ShowPreviewCard> {
             BoxShadow(
               blurRadius: 4,
               spreadRadius: 2,
-              color: AppColors.grey.withOpacity(0.6),
+              color: AppColors.grey.withValues(alpha: 0.6),
               offset: const Offset(0, 2),
             ),
           ],
