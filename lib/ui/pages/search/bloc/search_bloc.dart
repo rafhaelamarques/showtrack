@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/data/model/search.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
-import 'package:showtrack/data/webapi/client/tv_show_client.dart';
+import 'package:showtrack/data/services/client/tv_show_client.dart';
+import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final ITvShowRepository showRepository;
+  final TvShowRepositoryInterface showRepository;
   final TvShowClient showClient;
 
   late List<Search> _result;
@@ -48,7 +48,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }
     } catch (e) {
       emit(state.copyWith(status: SearchStatus.failure));
-      throw(e.toString());
+      throw (e.toString());
     }
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:showtrack/core/styles/app_colors.dart';
 import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
-import 'package:showtrack/ui/pages/search/search_page.dart';
-import 'package:showtrack/ui/styles/colors.dart';
+import 'package:showtrack/ui/pages/search/view/search_page.dart';
 
 class AddShowButton extends StatelessWidget {
   const AddShowButton({super.key});
@@ -40,6 +40,7 @@ class AddShowButton extends StatelessWidget {
           Icon(
             MdiIcons.plusCircle,
             size: 30,
+            color: AppColors.white,
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:showtrack/ui/styles/images.dart';
+import 'package:showtrack/core/styles/images.dart';
 
 class BannerWidget extends StatelessWidget {
   final String url;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:showtrack/ui/pages/home/home_page.dart';
-import 'package:showtrack/ui/styles/images.dart';
+import 'package:showtrack/core/styles/app_colors.dart';
+import 'package:showtrack/core/styles/images.dart';
+import 'package:showtrack/ui/pages/home/view/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -26,17 +27,18 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(AppImages.logo),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-            const CircularProgressIndicator(),
-          ],
-        ),
+    return SafeArea(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(AppImages.logo),
+          const Positioned(
+            bottom: 50,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:showtrack/core/application.dart';
+import 'package:showtrack/core/styles/app_colors.dart';
 import 'package:showtrack/ui/pages/splash/splash_page.dart';
-import 'package:showtrack/ui/styles/colors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
