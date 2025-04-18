@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final ITvShowRepository showRepository;
+  final TvShowRepositoryInterface showRepository;
 
   HomeBloc({
     required this.showRepository,
@@ -41,7 +41,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     } catch (e) {
       emit(state.copyWith(status: HomeStatus.failure));
-      throw(e.toString());
+      throw (e.toString());
     }
   }
 

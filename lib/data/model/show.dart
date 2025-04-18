@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:showtrack/core/styles/app_colors.dart';
 import 'package:showtrack/data/model/channel.dart';
 import 'package:showtrack/data/model/embedded.dart';
 import 'package:showtrack/data/model/image_banner.dart';
 import 'package:showtrack/data/model/links.dart';
 import 'package:showtrack/data/model/rating.dart';
 import 'package:showtrack/data/model/schedule.dart';
-import 'package:showtrack/ui/styles/colors.dart';
 
 part 'show.g.dart';
 

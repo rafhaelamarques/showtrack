@@ -2,9 +2,10 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:showtrack/core/hive_adapters.dart';
-import 'package:showtrack/data/repositories/tv_show_repository.dart';
-import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
-import 'package:showtrack/data/webapi/client/tv_show_client.dart';
+import 'package:showtrack/data/services/client/tv_show_client.dart';
+import 'package:showtrack/data/services/dio/dio_manager.dart';
+import 'package:showtrack/data/services/repositories/tv_show_repository.dart';
+import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 import 'package:showtrack/ui/pages/details/bloc/details_bloc.dart';
 import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
@@ -28,23 +29,29 @@ class Application {
   }
 
   static Future<void> _clientsSetup() async {
-    // Registro do TvShowClient
-    getIt.registerLazySingleton<TvShowClient>(() => TvShowClient());
+    // Registro de DioManager
+    getIt.registerLazySingleton<DioManager>(() => DioManager.instance);
+
+    // Registro de clients
+    getIt.registerFactory<TvShowClient>(
+      () => TvShowClient(dio: getIt<DioManager>()),
+    );
   }
 
   static Future<void> _repositoriesSetup() async {
     // Inicialização e registro do TvShowRepository
     final tvShowRepository = await TvShowRepository.getInstance();
-    getIt.registerLazySingleton<ITvShowRepository>(() => tvShowRepository);
+    getIt.registerLazySingleton<TvShowRepositoryInterface>(
+        () => tvShowRepository);
   }
 
   static Future<void> _blocsSetup() async {
     // Registro de blocs com bindings
     getIt.registerFactory<HomeBloc>(() => HomeBloc(
-          showRepository: getIt<ITvShowRepository>(),
+          showRepository: getIt<TvShowRepositoryInterface>(),
         ));
     getIt.registerFactory<SearchBloc>(() => SearchBloc(
-          showRepository: getIt<ITvShowRepository>(),
+          showRepository: getIt<TvShowRepositoryInterface>(),
           showClient: getIt<TvShowClient>(),
         ));
     getIt.registerFactory<DetailsBloc>(() => DetailsBloc(

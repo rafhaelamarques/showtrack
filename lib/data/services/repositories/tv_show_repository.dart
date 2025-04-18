@@ -1,8 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 
-class TvShowRepository implements ITvShowRepository {
+class TvShowRepository implements TvShowRepositoryInterface {
   // Pseudo singleton
   static late Box _box;
 
@@ -20,7 +20,6 @@ class TvShowRepository implements ITvShowRepository {
     await _init();
     return TvShowRepository._load();
   }
-  // Pseudo singleton
 
   @override
   Future<List<Show>> getShows() async {
