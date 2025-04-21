@@ -5,7 +5,6 @@ import 'package:showtrack/core/hive_adapters.dart';
 import 'package:showtrack/data/services/client/tv_show_client.dart';
 import 'package:showtrack/data/services/dio/dio_manager.dart';
 import 'package:showtrack/data/services/repositories/tv_show_repository.dart';
-import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 import 'package:showtrack/ui/pages/details/bloc/details_bloc.dart';
 import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/pages/search/bloc/search_bloc.dart';
@@ -41,17 +40,16 @@ class Application {
   static Future<void> _repositoriesSetup() async {
     // Inicialização e registro do TvShowRepository
     final tvShowRepository = await TvShowRepository.getInstance();
-    getIt.registerLazySingleton<TvShowRepositoryInterface>(
-        () => tvShowRepository);
+    getIt.registerLazySingleton<TvShowRepository>(() => tvShowRepository);
   }
 
   static Future<void> _blocsSetup() async {
     // Registro de blocs com bindings
     getIt.registerFactory<HomeBloc>(() => HomeBloc(
-          showRepository: getIt<TvShowRepositoryInterface>(),
+          showRepository: getIt<TvShowRepository>(),
         ));
     getIt.registerFactory<SearchBloc>(() => SearchBloc(
-          showRepository: getIt<TvShowRepositoryInterface>(),
+          showRepository: getIt<TvShowRepository>(),
           showClient: getIt<TvShowClient>(),
         ));
     getIt.registerFactory<DetailsBloc>(() => DetailsBloc(
