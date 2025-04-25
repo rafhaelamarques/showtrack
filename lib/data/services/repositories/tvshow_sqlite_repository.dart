@@ -7,7 +7,7 @@ import 'package:showtrack/data/model/links.dart';
 import 'package:showtrack/data/model/rating.dart';
 import 'package:showtrack/data/model/schedule.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/repositories/tvshow_repository_interface.dart';
 import 'package:sqflite/sqflite.dart';
 
 class TvShowSqliteRepository implements TvShowRepositoryInterface {
