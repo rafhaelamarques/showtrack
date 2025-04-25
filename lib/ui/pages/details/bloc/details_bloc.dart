@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/services/client/tv_show_client.dart';
+import 'package:showtrack/data/services/client/tvshow_client.dart';
 
 part 'details_event.dart';
 part 'details_state.dart';

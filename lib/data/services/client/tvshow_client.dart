@@ -1,6 +1,6 @@
 import 'package:showtrack/data/model/search.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/services/client/tv_show_client_interface.dart';
+import 'package:showtrack/data/services/client/tvshow_client_interface.dart';
 import 'package:showtrack/data/services/dio/dio_manager.dart';
 
 class TvShowRequestFailure implements Exception {

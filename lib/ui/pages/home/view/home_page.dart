@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/core/application.dart';
 import 'package:showtrack/core/styles/app_colors.dart';
-import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/repositories/tvshow_repository_interface.dart';
 import 'package:showtrack/ui/pages/home/bloc/home_bloc.dart';
 import 'package:showtrack/ui/pages/home/components/add_show_button.dart';
 import 'package:showtrack/ui/pages/home/components/show_preview_card.dart';

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/data/model/search.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/services/client/tv_show_client.dart';
-import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/client/tvshow_client.dart';
+import 'package:showtrack/data/services/repositories/tvshow_repository_interface.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';

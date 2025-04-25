@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:showtrack/data/model/show.dart';
-import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
+import 'package:showtrack/data/services/repositories/tvshow_repository_interface.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
