@@ -50,7 +50,7 @@ class Application {
         () => tvShowSqliteRepository);
 
     getIt.registerLazySingleton<TvShowRepositoryInterface>(
-      () => tvShowSqliteRepository,
+      () => tvShowHiveRepository,
     );
   }
 
