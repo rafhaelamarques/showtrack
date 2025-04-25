@@ -32,7 +32,6 @@ class TvShowSqliteRepository implements TvShowRepositoryInterface {
     if (exists) {
       // Se existir, apenas abre
       return await openDatabase(path, version: 1);
-      // await deleteDatabase(path);
     }
     // Se não existir, cria e abre
     return await openDatabase(path, version: 1, onCreate: _onCreate);
