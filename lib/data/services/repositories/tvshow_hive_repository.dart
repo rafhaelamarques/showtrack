@@ -2,11 +2,11 @@ import 'package:hive/hive.dart';
 import 'package:showtrack/data/model/show.dart';
 import 'package:showtrack/data/services/repositories/tv_show_repository_interface.dart';
 
-class TvShowRepository implements TvShowRepositoryInterface {
+class TvShowHiveRepository implements TvShowRepositoryInterface {
   // Pseudo singleton
   static late Box _box;
 
-  TvShowRepository._load();
+  TvShowHiveRepository._load();
 
   static Future<void> _init() async {
     if (Hive.isBoxOpen('shows')) {
@@ -16,9 +16,9 @@ class TvShowRepository implements TvShowRepositoryInterface {
     _box = await Hive.openBox('shows');
   }
 
-  static Future<TvShowRepository> getInstance() async {
+  static Future<TvShowHiveRepository> getInstance() async {
     await _init();
-    return TvShowRepository._load();
+    return TvShowHiveRepository._load();
   }
 
   @override
