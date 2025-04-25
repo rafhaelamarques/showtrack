@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   material_design_icons_flutter: ^7.0.7296
   hive: ^2.2.3
+  sqflite: ^2.4.2
   path_provider: ^2.1.5
   intl: ^0.20.2
   json_annotation: ^4.9.0
